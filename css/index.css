@@ -1,0 +1,7 @@
+.wrapper div {
+  padding: 10px;
+  width: 50%;
+  height: 200px;
+  background-color: blueviolet;
+  margin: 30px auto 0;
+}
