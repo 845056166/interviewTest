@@ -91,49 +91,58 @@ function preOrderTraverse(root) {
   return res
 }
 
-console.log('后序遍历');
-const res = inOrderTraverse({
-  val: 1,
-  left: {
-    val: 4,
-    left: {
-      val: 5,
-      left: null,
-      right: null
-    },
-    right: {
-      val: 6,
-      left: null,
-      right: null
-    }
-  },
-  right: {
-    val: 2,
-    right: null,
-    left: {
-      val: 3,
-      left: null,
-      right: null
-    },
-    right: {
-      val: 7,
-      left: {
-        val: 8,
-        left: null,
-        right: null
-      },
-      right: {
-        val: 9,
-        left: null,
-        right: null
-      }
-    }
+// console.log('后序遍历');
+// const res = inOrderTraverse({
+//   val: 1,
+//   left: {
+//     val: 4,
+//     left: {
+//       val: 5,
+//       left: null,
+//       right: null
+//     },
+//     right: {
+//       val: 6,
+//       left: null,
+//       right: null
+//     }
+//   },
+//   right: {
+//     val: 2,
+//     right: null,
+//     left: {
+//       val: 3,
+//       left: null,
+//       right: null
+//     },
+//     right: {
+//       val: 7,
+//       left: {
+//         val: 8,
+//         left: null,
+//         right: null
+//       },
+//       right: {
+//         val: 9,
+//         left: null,
+//         right: null
+//       }
+//     }
+//   }
+// })
+
+// console.log(res);
+
+const when = (condition, fullcall, failcall) => {
+  if (condition) {
+    fullcall()
+  } else {
+    failcall && failcall()
   }
+}
+when(false, function () {
+  console.log('1232');
 })
-
-console.log(res);
-
-
 
 
 // console.log(res);
