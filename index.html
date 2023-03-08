@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="./js/index.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="wrapper">
       <a href="https://baidu.com">点我</a>
     </div>
     <script>
-        window.onload = function() {
-          const div = document.querySelector('.wrapper');
-          const a = div.querySelector('a');
-          a.addEventListener('click', click1);
-          function click1() {
-              console.log(1);
-          }
-          a.addEventListener('click', click2);
-          function click2(e) {
-            console.log(2);
-            e.preventDefault();
-            e.stopPropagation();
-          }
-          div.addEventListener('click', click3, true);
-          function click3() {
-            console.log(3);
-          }
-          div.addEventListener('click', click4);
-          function click4() {
-            console.log(4);
-          }
+      window.onload = function () {
+        const div = document.querySelector(".wrapper")
+        const a = div.querySelector("a")
+        a.addEventListener("click", click1)
+        function click1() {
+          console.log(1)
         }
+        a.addEventListener("click", click2)
+        function click2(e) {
+          console.log(2)
+          e.preventDefault()
+          e.stopPropagation()
+        }
+        div.addEventListener("click", click3, true)
+        function click3() {
+          console.log(3)
+        }
+        div.addEventListener("click", click4)
+        function click4() {
+          console.log(4)
+        }
+      }
     </script>
-</body>
+  </body>
 </html>
