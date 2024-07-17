@@ -1,15 +1,15 @@
 function debounce(fn, delay) {
-  let timer = null
+  let timer = null;
   return function () {
     if (timer) {
-      clearTimeout(timer)
+      clearTimeout(timer);
     }
-    const context = this
-    const arg = arguments
+    const context = this;
+    const arg = arguments;
     timer = setTimeout(function () {
-      fn.apply(context, arg)
-    }, delay)
-  }
+      fn.apply(context, arg);
+    }, delay);
+  };
 }
 
-export default debounce
+export default debounce;

@@ -5,3 +5,9 @@
   background-color: blueviolet;
   margin: 30px auto 0;
 }
+
+#tree {
+  aspect-ratio: 1;
+  background-color: aquamarine;
+  margin: 30px auto 0;
+}

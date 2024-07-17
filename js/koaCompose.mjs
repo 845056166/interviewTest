@@ -1,23 +1,22 @@
-
-const middleware = []
-middleware.push((next) => {
+const middleware = [];
+middleware.push(next => {
   console.log(1);
-  next()
+  next();
   // next()
   console.log(1.1);
-})
+});
 
-middleware.push((next) => {
+middleware.push(next => {
   console.log(2);
-  next()
+  next();
   console.log(2.1);
-})
+});
 
-middleware.push((next) => {
+middleware.push(next => {
   console.log(3);
-  next()
+  next();
   console.log(3.1);
-})
+});
 
 // function compose(middleares) {
 //   let index = -1;
@@ -34,24 +33,28 @@ middleware.push((next) => {
 
 /**
  * 每次执行next的时候，闭包里的i都会增加一个，如果i > index 就说明next被调用了两次
- * @param {*} middleare 
- * @returns 
+ * @param {*} middleare
+ * @returns
  */
 function compose(middleare) {
-  let i = 0
+  let i = 0;
   return function () {
-    const run = (index) => {
-      if (index !== i) throw new RangeError('一个中间件next调用多次')
-      if (index > middleare.length - 1) return // 最后一个中间件的next不执行
-      const callfun = middleare[index]
-      return callfun(run.bind(null, ++i)) // 把下一个中间件传给当前的中间件
-    }
-    run(i)
-  }
+    const run = index => {
+      if (index !== i) {
+        throw new RangeError('一个中间件next调用多次');
+      }
+      if (index > middleare.length - 1) {
+        return;
+      } // 最后一个中间件的next不执行
+      const callfun = middleare[index];
+      return callfun(run.bind(null, ++i)); // 把下一个中间件传给当前的中间件
+    };
+    run(i);
+  };
 }
 
-fn = compose(middleware)
-fn()
+fn = compose(middleware);
+fn();
 // const app = {
 //   middlewares: [],
 //   callback(ctx) {

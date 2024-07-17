@@ -7,88 +7,98 @@
 
 /**
  * 中序遍历用栈
- * @param {*} root 
- * @returns 
+ * @param {*} root
+ * @returns
  */
 function inOrderTraverse(root) {
-  const res = []
-  const stack = []
+  const res = [];
+  const stack = [];
   while (root || stack.length) {
     while (root) {
-      stack.push(root)
-      root = root.left
+      stack.push(root);
+      root = root.left;
     }
-    root = stack.pop()
-    res.push(root.val)
-    root = root.right
+    root = stack.pop();
+    res.push(root.val);
+    root = root.right;
   }
-  return res
+  return res;
 }
 
 /**
  * 层级遍历用队列
- * @param {*} root 
- * @returns 
+ * @param {*} root
+ * @returns
  */
 function levelTraverse(root) {
-  const queue = [root]
-  let levelSize = 1
-  let height = 0
+  const queue = [root];
+  let levelSize = 1;
+  let height = 0;
   while (queue.length) {
-    const item = queue.shift()
+    const item = queue.shift();
     console.log(item.val);
-    if (queue.length === 0) levelSize--
-    item.left && queue.push(item.left)
-    item.right && queue.push(item.right)
-    if (levelSize === 0) { // levelSize === 0 代表有一层遍历完了
-      height++
-      levelSize = queue.length
+    if (queue.length === 0) {
+      levelSize--;
+    }
+    item.left && queue.push(item.left);
+    item.right && queue.push(item.right);
+    if (levelSize === 0) {
+      // levelSize === 0 代表有一层遍历完了
+      height++;
+      levelSize = queue.length;
     }
   }
 
-  return height
+  return height;
 }
 
 /**
  * 后序遍历
- * @param {*} tree 
- * @returns 
+ * @param {*} tree
+ * @returns
  */
 function postOrderTraverse(tree) {
-  const res = []
+  const res = [];
   function traverseInline(root) {
-    if (!root) return
-    traverseInline(root.left)
-    traverseInline(root.right)
-    res.push(root.val)
+    if (!root) {
+      return;
+    }
+    traverseInline(root.left);
+    traverseInline(root.right);
+    res.push(root.val);
   }
-  traverseInline(tree)
-  return res
+  traverseInline(tree);
+  return res;
 }
 
 function postOrderTraverseItera(root) {
-  let res = []
-  let stack = [root]
+  let res = [];
+  let stack = [root];
   while (stack.length) {
-    const item = stack.pop()
-    res.push(item.val)
-    if (item.left) stack.push(item.left)
-    if (item.right) stack.push(item.right)
+    const item = stack.pop();
+    res.push(item.val);
+    if (item.left) {
+      stack.push(item.left);
+    }
+    if (item.right) {
+      stack.push(item.right);
+    }
   }
-  return res.reverse()
+  return res.reverse();
 }
 
-
 function preOrderTraverse(root) {
-  const res = []
+  const res = [];
   function preoderInline(tree) {
-    if (!tree) return
-    res.push(tree.val)
-    preoderInline(tree.left)
-    preoderInline(tree.right)
+    if (!tree) {
+      return;
+    }
+    res.push(tree.val);
+    preoderInline(tree.left);
+    preoderInline(tree.right);
   }
-  preoderInline(root)
-  return res
+  preoderInline(root);
+  return res;
 }
 
 // console.log('后序遍历');
@@ -135,14 +145,13 @@ function preOrderTraverse(root) {
 
 const when = (condition, fullcall, failcall) => {
   if (condition) {
-    fullcall()
+    fullcall();
   } else {
-    failcall && failcall()
+    failcall && failcall();
   }
-}
+};
 when(false, function () {
   console.log('1232');
-})
-
+});
 
 // console.log(res);
